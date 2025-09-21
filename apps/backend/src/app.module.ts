@@ -12,9 +12,6 @@ import { LocationsModule } from './locations/locations.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
-
-@Module({
-  imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: true,
@@ -23,7 +20,7 @@ import { LocationsModule } from './locations/locations.module';
     PrismaModule,
     UsersModule,
     AuthModule,
-    LocationsModule
+    LocationsModule,
   ],
   providers: [AppResolver, AppService],
 })
