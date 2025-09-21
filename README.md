@@ -19,5 +19,10 @@ Common workspace commands:
 - Scaffold NestJS GraphQL backend modules (auth, users, locations) using Prisma and PostgreSQL integration.
 - Initialize Angular web client with Apollo Client and design system tokens.
 - Initialize React Native mobile app with Expo and shared design system tokens.
+
+## Next Steps
+- Set up monorepo tooling (Nx or pnpm workspaces) to host backend, web, and mobile packages.
+- Scaffold NestJS GraphQL backend with Prisma and PostgreSQL integration.
+- Initialize Angular web client and React Native mobile app with shared design system tokens.
 - Establish CI/CD workflows for linting, testing, and deployments.
 
