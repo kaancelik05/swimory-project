@@ -1,0 +1,85 @@
+// Prisma schema for the Swimory backend
+// Datasource configuration expects DATABASE_URL to be provided
+// in the environment (e.g. PostgreSQL connection string).
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  USER
+  BUSINESS
+  ADMIN
+}
+
+enum ReservationStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+}
+
+model User {
+  id           String      @id @default(cuid())
+  name         String
+  email        String      @unique
+  password     String
+  role         Role        @default(USER)
+  favorites    Location[]  @relation("FavoriteLocations")
+  reviews      Review[]
+  reservations Reservation[]
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+}
+
+model Location {
+  id             String          @id @default(cuid())
+  name           String
+  description    String
+  coordinates    Json
+  images         String[]
+  facilities     String[]
+  reviews        Review[]
+  affiliateLinks AffiliateLink[]
+  favoritedBy    User[]          @relation("FavoriteLocations")
+  reservations   Reservation[]
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+}
+
+model Review {
+  id         String   @id @default(cuid())
+  user       User     @relation(fields: [userId], references: [id])
+  userId     String
+  location   Location @relation(fields: [locationId], references: [id])
+  locationId String
+  rating     Int
+  comment    String
+  createdAt  DateTime @default(now())
+}
+
+model Reservation {
+  id         String             @id @default(cuid())
+  user       User               @relation(fields: [userId], references: [id])
+  userId     String
+  location   Location           @relation(fields: [locationId], references: [id])
+  locationId String
+  status     ReservationStatus  @default(PENDING)
+  date       DateTime
+  createdAt  DateTime           @default(now())
+  updatedAt  DateTime           @updatedAt
+}
+
+model AffiliateLink {
+  id          String   @id @default(cuid())
+  location    Location @relation(fields: [locationId], references: [id])
+  locationId  String
+  url         String
+  partnerName String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

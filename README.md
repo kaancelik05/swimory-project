@@ -16,6 +16,9 @@ Common workspace commands:
 - `pnpm --filter <package> <command>` – Run a script in a specific package (e.g., `pnpm --filter @swimory/backend start:dev`).
 
 ## Next Steps
+- Build review and reservation capabilities on the backend, expanding the GraphQL schema and Prisma models.
+- Initialize the Angular web client with Apollo Client and shared design system tokens.
+- Initialize the React Native mobile app with Expo and shared design system tokens.
 - Scaffold NestJS GraphQL backend modules (auth, users, locations) using Prisma and PostgreSQL integration.
 - Initialize Angular web client with Apollo Client and design system tokens.
 - Initialize React Native mobile app with Expo and shared design system tokens.

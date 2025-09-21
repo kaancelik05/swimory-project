@@ -5,11 +5,20 @@
   "scripts": {
     "start:dev": "nest start --watch",
     "start": "node dist/main.js",
+    "build": "nest build",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:studio": "prisma studio"
     "build": "nest build"
   },
   "dependencies": {
     "@nestjs/common": "^10.3.3",
     "@nestjs/core": "^10.3.3",
+    "@nestjs/config": "^3.2.0",
+    "@nestjs/graphql": "^12.0.6",
+    "@nestjs/platform-express": "^10.3.3",
+    "@nestjs/apollo": "^12.0.6",
+    "@nestjs/jwt": "^10.2.0",
     "@nestjs/graphql": "^12.0.6",
     "@nestjs/platform-express": "^10.3.3",
     "@nestjs/apollo": "^12.0.6",
